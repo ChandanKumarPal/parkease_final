@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+    <h1>Redirecting to payment...</h1>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "{{ payment_order.key_id }}",
+            "amount": "{{ payment_order.amount }}",
+            "currency": "{{ payment_order.currency }}",
+            "order_id": "{{ payment_order.id }}",
+            "handler": function (response){
+                // After successful payment, redirect to success page
+                window.location.href = "{% url 'payment_success' booking.id %}";
+            },
+            "prefill": {
+                "name": "{{ request.user.username }}",
+                "email": "{{ request.user.email }}"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    </script>
+</body>
+</html>

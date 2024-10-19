@@ -1,0 +1,280 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Parking</title>
+</head>
+<body>
+    <h1>Welcome to Vehicle Parking</h1>
+    <a href="{% url 'signup' %}">Sign Up</a> or <a href="{% url 'login' %}">Login</a>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Parking</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1em 0;
+        text-align: center;
+      }
+      nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 10px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .carousel {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 2em;
+      }
+      .carousel img {
+        width: 100%;
+        display: none;
+      }
+      .carousel img.active {
+        display: block;
+      }
+      .container {
+        width: 80%;
+        margin: 2em auto;
+        background-color: white;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 2.5em;
+      }
+      .features,
+      .testimonials,
+      .faq {
+        margin-bottom: 2em;
+      }
+      .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      .card {
+        background-color: #e0d3d3c4;
+        border-radius: 8px;
+        transition: 0.5s ease;
+        margin: 1em;
+        padding: 1.5em;
+        width: 30%;
+        text-align: center;
+      }
+      .card:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+      }
+      .card svg {
+        width: 100px;
+      }
+
+      .testimonial-item {
+        background-color: #e0d3d3c4;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .testimonial-item p {
+        font-style: italic;
+      }
+      .testimonial-item span {
+        display: block;
+        text-align: right;
+        margin-top: 0.5em;
+        font-weight: bold;
+      }
+      .faq-item {
+        background-color: #e0d3d3c4;
+        padding: 1em;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1em;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em 0;
+        margin-top: 2em;
+      }
+      .booking-form {
+        display: flex;
+        flex-direction: column;
+      }
+      .booking-form label {
+        margin-bottom: 0.5em;
+      }
+      .booking-form input,
+      .booking-form select {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .booking-form button {
+        padding: 0.75em;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .booking-form button:hover {
+        background-color: #555;
+      }
+      header h1 {
+        font-size: 20px;
+        margin: 0;
+      }
+      @media (max-width: 768px) {
+        .card {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Signup</a></li>
+          <li><a href="/booking">Book a Slot</a></li>
+        </ul>
+      </nav>
+      <hr />
+      <h1>S-PARKEASE</h1>
+    </header>
+    <div class="carousel">
+      <img
+        src="https://images.stockcake.com/public/e/8/3/e831d1ce-2cf0-4df3-8ec8-187f8778d71c_large/red-sports-car-stockcake.jpg"
+        class="active"
+        alt="Parking Image 1"
+      />
+      <img
+        src="https://images.stockcake.com/public/4/f/5/4f5bf958-3a1a-4184-932a-0e5f00e25806_large/charging-electric-car-stockcake.jpg"
+        alt="Parking Image 2"
+      />
+      <img
+        src="https://images.stockcake.com/public/8/3/b/83bf0833-16c1-4353-b30c-56b91e9b5761_large/indoor-car-park-stockcake.jpg"
+        alt="Parking Image 3"
+      />
+    </div>
+    <div class="container">
+      <section class="features">
+        <h2 class="section-title">Features</h2>
+        <div class="card-container">
+          <div class="card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z"
+              ></path>
+            </svg>
+            <h3>Secure Parking</h3>
+            <p>Secure parking with 24/7 surveillance</p>
+          </div>
+          <div class="card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 3V7H6.23607L4.235 11H22V21C22 21.5523 21.5523 22 21 22H20C19.4477 22 19 21.5523 19 21V20H5V21C5 21.5523 4.55228 22 4 22H3C2.44772 22 2 21.5523 2 21V11L4.44721 6.10557C4.786 5.428 5.47852 5 6.23607 5H9V3H12ZM20 13H4V18H20V13ZM6.5 14C7.32843 14 8 14.6716 8 15.5C8 16.3284 7.32843 17 6.5 17C5.67157 17 5 16.3284 5 15.5C5 14.6716 5.67157 14 6.5 14ZM17.5 14C18.3284 14 19 14.6716 19 15.5C19 16.3284 18.3284 17 17.5 17C16.6716 17 16 16.3284 16 15.5C16 14.6716 16.6716 14 17.5 14ZM18.5 1C20.9853 1 23 3.01472 23 5.5C23 7.98528 20.9853 10 18.5 10C16.0147 10 14 7.98528 14 5.5C14 3.01472 16.0147 1 18.5 1ZM18.4998 6.16667C18.0089 6.16667 17.5593 6.34354 17.2113 6.63704L17.0856 6.75245L18.4998 8.16667L19.9131 6.7515C19.5512 6.39013 19.0516 6.16667 18.4998 6.16667ZM18.4998 2.83333C17.9801 2.83333 17.5306 2.97649 17.186 3.24071L17.0544 3.35213L18.4998 4.79662L19.9454 3.35164C19.5673 2.97357 19.0592 2.83333 18.4998 2.83333ZM15.8333 5.5C15.8333 5.97889 16.0125 6.40592 16.3258 6.72262L16.4998 6.89542L17.165 7.56058C16.8741 7.87442 16.491 8.16667 15.9998 8.16667C15.5096 8.16667 15.1265 7.87442 14.8356 7.56058L14.9998 7.39542L14.8257 7.22238C14.5125 6.90568 14.3333 6.47865 14.3333 6C14.3333 5.51135 14.5125 5.08432 14.8257 4.76762L14.9998 4.60458L15.165 4.43942C15.4559 4.12558 15.839 3.83333 16.3292 3.83333C16.8194 3.83333 17.2025 4.12558 17.4934 4.43942L17.4998 4.44583L17.166 4.77958C16.8525 4.46696 16.4893 4.16667 15.9998 4.16667C15.5096 4.16667 15.1464 4.46696 14.8329 4.77958L14.9998 4.94658L14.8257 5.11962C14.5125 5.43632 14.3333 5.86335 14.3333 6.34296C14.3333 6.83161 14.5125 7.25864 14.8257 7.57534L15.4998 8.25C14.8332 7.58345 14.3333 6.64788 14.3333 5.5ZM12.9998 0C15.4851 0 17.5 2.01472 17.5 4.5C17.5 6.98528 15.4851 9 12.9998 9C10.5147 9 8.5 6.98528 8.5 4.5C8.5 2.01472 10.5147 0 12.9998 0ZM12.9998 2.16667C11.9608 2.16667 11.1665 2.96104 11.1665 4C11.1665 5.03929 11.9608 5.83367 12.9998 5.83367C14.0387 5.83367 14.833 5.03929 14.833 4C14.833 2.96104 14.0387 2.16667 12.9998 2.16667ZM11.3333 1.83333C11.3333 1.072 10.7613 0.5 10 0.5C9.23867 0.5 8.66667 1.072 8.66667 1.83333C8.66667 2.59467 9.23867 3.16667 10 3.16667C10.7613 3.16667 11.3333 2.59467 11.3333 1.83333Z"
+              ></path>
+            </svg>
+            <h3>Easy Booking</h3>
+            <p>Book your parking slot in just a few clicks</p>
+          </div>
+          <div class="card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z"
+              ></path>
+            </svg>
+            <h3>Convenient Location</h3>
+            <p>Find parking spots in prime locations</p>
+          </div>
+        </div>
+      </section>
+      <section class="testimonials">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonial-item">
+          <p>"Best parking service I've ever used! Highly recommend."</p>
+          <span> Mr. Ajay </span>
+        </div>
+        <div class="testimonial-item">
+          <p>"Convenient and easy to book. Will use again."</p>
+          <span>--MR. Himanshu Rana </span>
+        </div>
+      </section>
+      <section class="faq">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+          <h3>How do I book a parking slot?</h3>
+          <p>
+            You can book a parking slot by clicking on the 'Book a Slot' link in
+            the navigation menu and following the instructions.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>What payment methods are accepted?</h3>
+          <p>We accept all major credit cards and online payment methods.</p>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <p>&copy; 2024 Vehicle Parking. All rights reserved.</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var carouselImages = document.querySelectorAll(".carousel img");
+        var currentIndex = 0;
+
+        function showNextImage() {
+          carouselImages[currentIndex].classList.remove("active");
+          currentIndex = (currentIndex + 1) % carouselImages.length;
+          carouselImages[currentIndex].classList.add("active");
+        }
+
+        setInterval(showNextImage, 3000);
+      });
+    </script>
+  </body>
+</html>

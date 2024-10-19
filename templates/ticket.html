@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .ticket-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #e74c3c;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        @media print {
+            .button-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <h1>Booking Ticket</h1>
+        <p><strong>User:</strong> {{ booking.user.username }}</p>
+        <p><strong>Slot:</strong> {{ booking.slot.name }}</p>
+        <p><strong>Vehicle Number:</strong> {{ booking.vehicle_number }}</p>
+        <p class="price"><strong>Paid:</strong> {{ booking.price }} Rs</p>
+        <p><strong>Start Time:</strong> {{ booking.start_time }}</p>
+        <p><strong>End Time:</strong> {{ booking.end_time }}</p>
+        <!-- <p class="price"><strong>Paid:</strong> {{ booking.price }} Rs</p> -->
+        <p>Your booking is confirmed . Thank you for visiting Shivalik College Of Engineering </p>
+        <div class="button-container">
+            <a href="#" class="button" onclick="window.print()">Download Ticket</a>
+            <a href="{% url 'index' %}" class="button">Go to Home</a>
+        </div>
+    </div>
+</body>
+</html>
